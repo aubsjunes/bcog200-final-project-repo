@@ -1,0 +1,8 @@
+The goal is to set up a program that functions as a rigged video game.
+It is a color versus color video game.
+The player picks their favorite color from a list:
+red, orange, yellow, green, blue, purple, white, hot pink, black, navy, light pink
+There are two outcomes that can happen, if the player picks a color other than pink, 
+their color will recorded and entered into a fighter game with pink (each color will represented as a monster flavor)
+The catch is that pink will be faster and also have a pink gun
+ANother catch is that there will instructions on how to play but none of the controls will work because pink must win no matter what.
