@@ -64,3 +64,7 @@ pink_type (string): "hot pink" or "light pink"
 Shows custom visuals and theme based on pink type :P
 
 Could be used if someone wants to play a funny, unexpected game or a developer is demonstrating game design concepts.
+
+Inputs needed:
+I need to include a string of colors
+Must insert .jpeg files
