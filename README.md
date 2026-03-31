@@ -26,3 +26,27 @@ The player’s character slowly loses health regardless of input.
 
 List of functions to be used:
 main() (duh!)
+
+get_player_choice(color_list)
+Prompts the user to choose a color.
+color_list (list of strings): Available color options
+choice (string): Player’s selected color
+
+is_pink(choice)
+Checks if the selected color is a shade of pink.
+choice (string)
+True if the color is "hot pink" or "light pink"
+False otherwise
+
+start_fight(player_color)
+Starts the rigged fight sequence.
+player_color (string)
+Loads character sprites (JPEG images)
+Displays instructions (non-functional controls)
+Runs fight loop where player always loses
+
+display_instructions()
+Shows gameplay controls to the player.
+Arrow keys → movement
+Spacebar → attack
+(These controls do not actually work.)
