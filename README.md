@@ -1,7 +1,28 @@
 # bcog200-final-project-repo
-# For my final project I will be proving once and for all that pink is the best color. I will be making a program where a person can enter their favorite color and watch as their color gets absolutely destroyed by pink (aka the best color). If they put pink I will make a screen that rewards them. If they pick orange the screen immediately explodes.
-# def get_color, def destroy_other_color, def pink_wins
-# def get_color when someone enters their favorite color the system will process it and produce that color in my game
-# def destroy_other_color will set up the program that sets pink's speed much higher than the other colors however based on how much I like the other colors, they will be fast but not faster than pink.
-# def pink_wins No matter what pink will win and a winning screen will pop up that I designed
-# the options will be red, orange, yellow, green, blue, purple, white, hot pink, black, navy, light pink
+The goal is to set up a program that functions as a rigged video game.
+It is a color versus color video game.
+The program asks the player to pick their favorite color from a list:
+red, orange, yellow, green, blue, purple, white, hot pink, black, navy, light pink
+There are two outcomes that can happen, if the player picks a color other than pink, 
+their color will be recorded and entered into a fighter game with pink (each color will represented as a monster flavor. there is a jpeg for each monster flavor.)
+the selected color will be given a pool noodle to fight with light pink.
+The catch is that light pink will be faster and also have a pink gun
+ANother catch is that there will instructions (use the arrows to control movement and use space to hit pink with the pool noodle) on how to play but none of the controls will work because pink must win no matter what.
+There will be health bars but pink can take no damage so the player just helplessly watches their color slowly loss all their health
+The color (that is not pink) will try to run away and the player will try to control the game and help their color but it will not work.
+If pink of any kind is chosen there will just be a screen of celebration with themes relating to the type of pink chosen (designed by me!).
+
+Basically:
+The game follows this basic flow:
+The player selects a color from a predefined list.
+The program checks whether the selected color is a shade of pink.
+Based on the choice:
+Non-pink color → enters a “fight” against light pink.
+Pink color → triggers a celebration screen.
+In the fight:
+The player is shown controls but cannot actually affect gameplay.
+The opponent (light pink) is overpowered and cannot lose.
+The player’s character slowly loses health regardless of input.
+
+List of functions to be used:
+main() (duh!)
