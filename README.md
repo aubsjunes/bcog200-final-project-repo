@@ -62,3 +62,5 @@ celebration_screen(pink_type)
 Displays a themed celebration if a pink color is chosen.
 pink_type (string): "hot pink" or "light pink"
 Shows custom visuals and theme based on pink type :P
+
+Could be used if someone wants to play a funny, unexpected game or a developer is demonstrating game design concepts.
