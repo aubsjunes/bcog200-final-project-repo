@@ -50,3 +50,15 @@ Shows gameplay controls to the player.
 Arrow keys → movement
 Spacebar → attack
 (These controls do not actually work.)
+
+update_health(player, opponent)
+Updates health bars during the fight.
+player (object or dict)
+opponent (object or dict)
+Player health decreases over time
+Pink opponent health never decreases
+
+celebration_screen(pink_type)
+Displays a themed celebration if a pink color is chosen.
+pink_type (string): "hot pink" or "light pink"
+Shows custom visuals and theme based on pink type :P
