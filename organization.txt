@@ -6,3 +6,5 @@ There are two outcomes that can happen, if the player picks a color other than p
 their color will recorded and entered into a fighter game with pink (each color will represented as a monster flavor)
 The catch is that pink will be faster and also have a pink gun
 ANother catch is that there will instructions on how to play but none of the controls will work because pink must win no matter what.
+SO the other color will try to run away and the player will try to control the game and help it's color but it will not work.
+If pink of any kind is chosen there will just be a screen of celebration with themes relating to the type of pink chosen.
