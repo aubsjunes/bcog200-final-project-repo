@@ -1,4 +1,6 @@
+color_list = ["red", "orange", "yellow", "green", "blue", "purple", "light pink", "hot pink", "black", "white", "navy"]
 def get_player_choice(color_list):
+
 
 def is_pink(choice):
 
