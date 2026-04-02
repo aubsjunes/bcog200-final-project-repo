@@ -1,0 +1,5 @@
+Welcome to my game!
+Today your favorite color is going to battle my favorite color!
+Don't worry, it'll be a fair fight...
+All you have to do is use the arrows to move around and space bar to shoot.
+Good luck!
