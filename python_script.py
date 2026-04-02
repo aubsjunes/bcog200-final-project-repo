@@ -1,4 +1,7 @@
 color_list = ["red", "orange", "yellow", "green", "blue", "purple", "light pink", "hot pink", "black", "white", "navy"]
+def __init__():
+    pass
+
 def get_player_choice(color_list):
 
 
