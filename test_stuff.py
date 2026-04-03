@@ -1,20 +1,59 @@
-# Expected Behavior:
-# The game accepts the input.
-# The player’s color (blue) is loaded as a monster (JPEG image).
-# The game transitions into the fight scene.
-# Instructions are displayed:
-# Arrow keys for movement
-# Spacebar for attack
-# During the Fight:
-# The player attempts to control the character:
-# Pressing keys does not affect movement or attacks.
-# Light pink opponent:
-# Moves faster than the player
-# Uses a pink gun
-# Health bars appear:
-# Player health gradually decreases
-# Pink opponent health does not decrease at all
-# The player’s character may attempt to run away, but cannot escape.
-# Final Outcome:
-# Player’s health reaches zero.
-# Pink wins every time. 
+import pytest
+
+# Import your functions from your main program file
+# Replace "main" with whatever your file is called
+from main import is_pink, get_player_choice
+
+
+# -------------------------
+# Test: is_pink()
+# -------------------------
+
+def test_is_pink_true():
+    assert is_pink("hot pink") == True
+    assert is_pink("light pink") == True
+
+
+def test_is_pink_false():
+    assert is_pink("blue") == False
+    assert is_pink("green") == False
+    assert is_pink("red") == False
+
+
+def test_is_pink_case_insensitive():
+    # If you implemented lowercase handling
+    assert is_pink("Hot Pink".lower()) == True
+    assert is_pink("LIGHT PINK".lower()) == True
+
+
+# -------------------------
+# Test: get_player_choice()
+# -------------------------
+
+def test_valid_input(monkeypatch):
+    # Simulate user typing "blue"
+    monkeypatch.setattr("builtins.input", lambda _: "blue")
+    
+    color_list = [
+        "red", "orange", "yellow", "green", "blue",
+        "purple", "white", "hot pink", "black",
+        "navy", "light pink"
+    ]
+    
+    choice = get_player_choice(color_list)
+    assert choice == "blue"
+
+
+def test_invalid_then_valid_input(monkeypatch):
+    # Simulate user typing invalid input first, then valid
+    inputs = iter(["brown", "green"])
+    monkeypatch.setattr("builtins.input", lambda _: next(inputs))
+    
+    color_list = [
+        "red", "orange", "yellow", "green", "blue",
+        "purple", "white", "hot pink", "black",
+        "navy", "light pink"
+    ]
+    
+    choice = get_player_choice(color_list)
+    assert choice == "green" 
