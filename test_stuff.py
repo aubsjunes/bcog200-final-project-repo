@@ -1,13 +1,6 @@
 import pytest
 
-# Import your functions from your main program file
-# Replace "main" with whatever your file is called
 from main import is_pink, get_player_choice
-
-
-# -------------------------
-# Test: is_pink()
-# -------------------------
 
 def test_is_pink_true():
     assert is_pink("hot pink") == True
@@ -24,11 +17,6 @@ def test_is_pink_case_insensitive():
     # If you implemented lowercase handling
     assert is_pink("Hot Pink".lower()) == True
     assert is_pink("LIGHT PINK".lower()) == True
-
-
-# -------------------------
-# Test: get_player_choice()
-# -------------------------
 
 def test_valid_input(monkeypatch):
     # Simulate user typing "blue"
