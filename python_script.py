@@ -4,7 +4,6 @@ def __init__():
 
 def get_player_choice(color_list):
 
-
 def is_pink(choice):
 
 def start_fight(player_color):
