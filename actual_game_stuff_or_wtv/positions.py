@@ -48,3 +48,24 @@ def get_player_weapon_pos(player):
     weapon_y = player["y"] + player["height"] // 2 - 10
 
     return weapon_x, weapon_y
+
+def get_pink_weapon_pos(opponent):
+    weapon_x = opponent["x"] - 30
+    weapon_y = opponent["y"] + opponent["height"] // 3
+
+    return weapon_x, weapon_y
+
+def render_scene(screen, player, opponent):
+    screen.fill((255, 255, 255))  # white background
+
+    screen.blit(player["image"], (player["x"], player["y"]))
+
+    player_weapon_x, player_weapon_y = get_player_weapon_pos(player)
+    screen.blit(player["weapon"], (player_weapon_x, player_weapon_y))
+
+    screen.blit(opponent["image"], (opponent["x"], opponent["y"]))
+
+    opponent_weapon_x, opponent_weapon_y = get_pink_weapon_pos(opponent)
+    screen.blit(opponent["weapon"], (opponent_weapon_x, opponent_weapon_y))
+
+    pygame.display.flip()
