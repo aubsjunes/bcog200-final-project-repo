@@ -1,5 +1,5 @@
-from instructions import instructions
 import tkinter as tk
+from instructions.txt import instructions
 
 window_height = 800
 window_width = 1600
