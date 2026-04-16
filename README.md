@@ -1,4 +1,5 @@
 # bcog200-final-project-repo
+
 The goal is to set up a program that functions as a rigged video game.
 It is a color versus color video game.
 The program asks the player to pick their favorite color from a list:
