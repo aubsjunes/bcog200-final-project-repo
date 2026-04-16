@@ -23,3 +23,23 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def game_loop(screen, player, opponent):
+    running = True
+    clock = pygame.time.Clock()
+
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        opponent["x"] -= 1  # pink slowly approaches
+
+        player["health"] -= 0.1
+
+        render_scene(screen, player, opponent)
+
+        if player["health"] <= 0:
+            running = False
+
+        clock.tick(60)
