@@ -8,11 +8,6 @@ def load_image(file_name):
     image = pygame.image.load(path).convert_alpha()
     return image
 
-def scale_image(image, width, height):
-    image = scale_image(image, 120, 120)
-    weapon = scale_image(weapon, 60, 20)
-    return pygame.transform.scale(image, (width, height))
-
 def create_player(color):
     file_name = f"{color.replace(' ', '_')}_monster.jpeg"
 
