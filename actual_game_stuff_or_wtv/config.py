@@ -1,5 +1,8 @@
 import pygame
+import math
 
+weapon_x = "pink_gun.jpeg"
+weapon_y = "pool_noodle.jpeg"
 window_height = 800
 window_width = 1600
 
@@ -11,3 +14,7 @@ def scale_image(image, width, height):
     image = scale_image(image, 120, 120)
     weapon = scale_image(weapon, 60, 20)
     return pygame.transform.scale(image, (width, height))
+
+
+swing = math.sin(pygame.time.get_ticks() * 0.01) * 10
+weapon_y += swing
