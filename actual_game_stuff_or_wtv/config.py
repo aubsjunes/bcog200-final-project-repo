@@ -28,3 +28,13 @@ opponent_start_y = 300
 
 player_speed = 1
 opponent_speed = 3
+
+monster_suffix = "_monster.jpeg"
+
+pink_monster_file = "pink_monster.jpeg"
+
+pool_noodle_file = "pool_noodle.jpeg"
+pink_gun_file = "pink_gun.jpeg"
+
+hot_pink_screen = "hot_pink.jpg"
+light_pink_screen = "light_pink.jpg"
