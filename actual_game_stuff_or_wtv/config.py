@@ -38,3 +38,21 @@ pink_gun_file = "pink_gun.jpeg"
 
 hot_pink_screen = "hot_pink.jpg"
 light_pink_screen = "light_pink.jpg"
+
+character_width = 120
+character_height = 120
+
+pool_noodle_size = (80, 20)
+pink_gun_size = (60, 30)
+
+player_weapon_offset_x = -10
+player_weapon_offset_Y = -10
+
+opponent_weapon_offset_x = -30
+opponent_weapon_offset_y_divisor = 3
+
+health_bar_width = 150
+health_bar_height = 15
+
+player_health_bar_pos = (50, 50)
+opponent_health_bar_pos = (400, 50)
