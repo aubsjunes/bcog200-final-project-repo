@@ -56,3 +56,19 @@ health_bar_height = 15
 
 player_health_bar_pos = (50, 50)
 opponent_health_bar_pos = (400, 50)
+
+def get_monster_image_path(color):
+    file_name = f"{color.replace(' ', '_')}{monster_suffix}"
+    return os.path.join(colors_folder, file_name)
+
+def get_pink_monster_path():
+    return os.path.join(colors_folder, pink_monster_file)
+
+def get_weapon_path(file_name):
+    return os.path.join(colors_folder, file_name)
+
+def get_celebration_image(pink_type):
+    if pink_type == "hot pink":
+        return os.path.join(colors_folder, hot_pink_screen)
+    elif pink_type == "light pink":
+        return os.path.join(colors_folder, light_pink_screen)
