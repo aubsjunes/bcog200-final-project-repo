@@ -93,7 +93,94 @@ def handle_player_input():
         pass
 
 def enemy_behavior(opponent):
-    opponent["x"] -= config.OPPONENT_SPEED
+    opponent["x"] -= config.opponent_speed
 
 def render_scene(screen, player, opponent):
-    screen.fill(config.WHITE)
+    screen.blit(player["image"], (player["x"], player["y"]))
+    px, py = get_player_weapon_pos(player)
+    screen.blit(player["weapon"], (px, py))
+
+    screen.blit(opponent["image"], (opponent["x"], opponent["y"]))
+    ox, oy = get_pink_weapon_pos(opponent)
+
+    gun = pygame.transform.rotate(opponent["weapon"], -20)
+    screen.blit(gun, (ox, oy))
+
+    draw_health_bar(
+        screen,
+        config.player_health_bar_pos[0],
+        config.player_health_bar_pos[1],
+        player["health"],
+        config.player_max_health
+    )
+
+    draw_health_bar(
+        screen,
+        config.opponent_health_bar_pos[0],
+        config.opponent_health_bar_pos[1],
+        opponent["health"],
+        config.opponent_max_health
+    )
+
+    pygame.display.flip()
+
+def draw_health_bar(screen, x, y, health, max_health):
+    ratio = max(health / max_health, 0)
+
+    pygame.draw.rect(
+        screen,
+        config.red,
+        (x, y, config.HEALTH_BAR_WIDTH, config.HEALTH_BAR_HEIGHT)
+    )
+ 
+    pygame.draw.rect(
+        screen,
+        config.green,
+        (
+            x,
+            y,
+            config.health_bar_width * ratio,
+            config.health_bar_height
+        )
+    )
+ 
+    pygame.draw.rect(
+        screen,
+        config.black,
+        (x, y, config.health_bar_width, config.health_bar_height),
+        2
+    )
+
+def start_fight(player_color):
+    pygame.init()
+
+    screen = pygame.display.set_mode(
+        (config.screen_width, config.screen_height)
+    )
+    pygame.display.set_caption("What color is the best???")
+
+    clock = pygame.time.Clock()
+
+    player = create_player(player_color)
+    opponent = create_pink_opponent()
+
+    running = True
+
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        handle_player_input()
+        enemy_behavior(opponent)
+        update_health(player, opponent)
+
+        render_scene(screen, player, opponent)
+
+        if player["health"] <= 0:
+            running = False
+
+        clock.tick(config.FPS)
+
+    pygame.quit()
+    return "lose"

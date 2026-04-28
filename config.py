@@ -1,7 +1,7 @@
 import os
 
 base_dir = os.path.dirname(__file__)
-colors_folder = os.path.join(BASE_DIR, "colors_folder")
+colors_folder = os.path.join(base_dir, "colors_folder")
 
 screen_width = 800
 screen_height = 600
