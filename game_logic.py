@@ -20,7 +20,7 @@ def is_pink(choice):
     return choice in PINK_OPTIONS
 
 def is_pink(choice):
-    return choice in config.pink_options
+    return choice in config.PINK_OPTIONS
     
 def determine_game_path(choice):
     if is_pink(choice):

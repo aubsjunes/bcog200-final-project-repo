@@ -1,45 +1,27 @@
-from game_logic import get_player_choice, is_pink
+import config
+from game_logic import get_player_choice, determine_game_path
 from fight_engine import start_fight
 from ui_display import display_intro, celebration_screen
-
-
-COLOR_LIST = [
-    "red", "orange", "yellow", "green", "blue",
-    "purple", "white", "hot pink", "black",
-    "navy", "light pink"
-]
 
 def main():
     display_intro()
 
-    choice = get_player_choice(COLOR_LIST)
+    choice = get_player_choice()
 
-    if is_pink(choice):
+    path = determine_game_path(choice)
+
+    if path == "celebration":
+        # Pink chosen → instant win
         celebration_screen(choice)
-    else:
+
+    elif path == "fight":
+        # Non-pink → rigged fight
         result = start_fight(choice)
-        print(f"Game Over: You {result}")
 
-
-if __name__ == "__main__":
-    main()
-
-def game_loop(screen, player, opponent):
-    running = True
-    clock = pygame.time.Clock()
-
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        opponent["x"] -= 1  # pink slowly approaches
-
-        player["health"] -= 0.1
-
-        render_scene(screen, player, opponent)
-
-        if player["health"] <= 0:
-            running = False
-
-        clock.tick(60)
+        print("\n===================================")
+        print("WOMP WOMP!!   GAME OVER")
+        print("===================================")
+        print(f"Your color ({choice}) lost :P")
+        print("Pink wins. As expected. ")
+        print("Better luck next time JKKKK")
+        print("===================================\n")

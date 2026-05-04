@@ -1,5 +1,14 @@
 import pygame
 import config
+from ui_display import draw_instructions
+
+def load_image(path, size=None):
+    image = pygame.image.load(path).convert_alpha()
+
+    if size:
+        image = pygame.transform.scale(image, size)
+
+    return image
 
 def load_image(path, size=None):
     image = pygame.image.load(path).convert_alpha()
@@ -42,7 +51,7 @@ def create_pink_opponent():
         ),
         "weapon": load_image(
             config.get_weapon_path(config.PINK_GUN_FILE),
-            config.pink_gun_size
+            config.PINK_GUN_SIZE
         ),
         "width": config.CHARACTER_WIDTH,
         "height": config.CHARACTER_HEIGHT,
@@ -51,35 +60,36 @@ def create_pink_opponent():
 
     return opponent
 
-def get_player_weapon_pos(player):
-    weapon_x = (
-        player["x"]
-        + player["width"]
-        + config.PLAYER_WEAPON_OFFSET_X
-    )
+def create_pink_opponent():
+    image_path = config.get_pink_monster_path()
 
-    weapon_y = (
-        player["y"]
-        + player["height"] // 2
-        + config.PLAYER_WEAPON_OFFSET_Y
-    )
+    opponent = {
+        "x": config.OPPONENT_START_X,
+        "y": config.OPPONENT_START_Y,
+        "image": load_image(
+            image_path,
+            (config.CHARACTER_WIDTH, config.CHARACTER_HEIGHT)
+        ),
+        "weapon": load_image(
+            config.get_weapon_path(config.PINK_GUN_FILE),
+            config.PINK_GUN_SIZE
+        ),
+        "width": config.CHARACTER_WIDTH,
+        "height": config.CHARACTER_HEIGHT,
+        "health": config.OPPONENT_MAX_HEALTH
+    }
 
-    return weapon_x, weapon_y
-
-
-def get_pink_weapon_pos(opponent):
-    weapon_x = opponent["x"] + config.OPPONENT_WEAPON_OFFSET_X
-
-    weapon_y = (
-        opponent["y"]
-        + opponent["height"] // config.OPPONENT_WEAPON_OFFSET_X_DIVISOR
-    )
-
-    return weapon_x, weapon_y
+    return opponent
 
 def update_health(player, opponent):
-
     player["health"] -= config.PLAYER_HEALTH_DECAY
+
+    opponent["health"] = config.OPPONENT_MAX_HEALTH
+
+def update_health(player, opponent):
+    # Player slowly loses health no matter what
+    player["health"] -= config.PLAYER_HEALTH_DECAY
+
     opponent["health"] = config.OPPONENT_MAX_HEALTH
 
 def handle_player_input():
@@ -95,7 +105,29 @@ def handle_player_input():
 def enemy_behavior(opponent):
     opponent["x"] -= config.OPPONENT_SPEED
 
+def draw_health_bar(screen, x, y, health, max_health):
+    ratio = max(health / max_health, 0)
+
+    pygame.draw.rect(
+        screen,
+        config.RED,
+        (x, y, config.HEALTH_BAR_WIDTH, config.HEALTH_BAR_HEIGHT)
+    )
+
+    pygame.draw.rect(
+        screen,
+        config.GREEN,
+        (
+            x,
+            y,
+            config.HEALTH_BAR_WIDTH * ratio,
+            config.HEALTH_BAR_HEIGHT
+        )
+    )
+
 def render_scene(screen, player, opponent):
+    screen.fill(config.WHITE)
+
     screen.blit(player["image"], (player["x"], player["y"]))
     px, py = get_player_weapon_pos(player)
     screen.blit(player["weapon"], (px, py))
@@ -103,8 +135,10 @@ def render_scene(screen, player, opponent):
     screen.blit(opponent["image"], (opponent["x"], opponent["y"]))
     ox, oy = get_pink_weapon_pos(opponent)
 
-    gun = pygame.transform.rotate(opponent["weapon"], -20)
-    screen.blit(gun, (ox, oy))
+    rotated_gun = pygame.transform.rotate(opponent["weapon"], -20)
+    screen.blit(rotated_gun, (ox, oy))
+
+    draw_instructions(screen)
 
     draw_health_bar(
         screen,
@@ -124,40 +158,13 @@ def render_scene(screen, player, opponent):
 
     pygame.display.flip()
 
-def draw_health_bar(screen, x, y, health, max_health):
-    ratio = max(health / max_health, 0)
-
-    pygame.draw.rect(
-        screen,
-        config.red,
-        (x, y, config.HEALTH_BAR_WIDTH, config.HEALTH_BAR_HEIGHT)
-    )
- 
-    pygame.draw.rect(
-        screen,
-        config.green,
-        (
-            x,
-            y,
-            config.HEALTH_BAR_WIDTH * ratio,
-            config.HEALTH_BAR_HEIGHT
-        )
-    )
- 
-    pygame.draw.rect(
-        screen,
-        config.black,
-        (x, y, config.HEALTH_BAR_WIDTH, config.HEALTH_BAR_HEIGHT),
-        2
-    )
-
 def start_fight(player_color):
     pygame.init()
 
     screen = pygame.display.set_mode(
         (config.SCREEN_WIDTH, config.SCREEN_HEIGHT)
     )
-    pygame.display.set_caption("What color is the best???")
+    pygame.display.set_caption("Aubrey's Game of Mystical Wonder and the Color Pink")
 
     clock = pygame.time.Clock()
 
@@ -172,7 +179,9 @@ def start_fight(player_color):
                 running = False
 
         handle_player_input()
+
         enemy_behavior(opponent)
+
         update_health(player, opponent)
 
         render_scene(screen, player, opponent)

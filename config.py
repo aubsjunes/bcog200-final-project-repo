@@ -3,8 +3,8 @@ import os
 base_dir = os.path.dirname(__file__)
 colors_folder = os.path.join(base_dir, "colors_folder")
 
-screen_width = 800
-screen_height = 600
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
 FPS = 60
 
 color_list = [
@@ -13,62 +13,62 @@ color_list = [
     "navy", "light pink"
 ]
 
-pink_options = ["hot pink", "light pink"]
+PINK_OPTIONS = ["hot pink", "light pink"]
 
-player_max_health = 100
-opponent_max_health = 100
+PLAYER_MAX_HEALTH = 100
+OPPONENT_MAX_HEALTH = 100
 
-player_health_decay = 0.5
+PLAYER_HEALTH_DECAY = 0.5
 
-player_start_x = 100
-player_start_y = 300
+PLAYER_START_X = 100
+PLAYER_START_Y = 300
 
-opponent_start_x = 500
-opponent_start_y = 300
+OPPONENT_START_X = 500
+OPPONENT_START_Y = 300
 
-player_speed = 1
-opponent_speed = 3
+PLAYER_SPEED = 1
+OPPONENT_SPEED = 3
 
-monster_suffix = "_monster.jpeg"
+MONSTER_SUFFIX = "_monster.jpeg"
 
-pink_monster_file = "pink_monster.jpeg"
+PINK_MONSTER_FILE = "pink_monster.jpeg"
 
-pool_noodle_file = "pool_noodle.jpeg"
-pink_gun_file = "pink_gun.jpeg"
+POOL_NOODLE_FILE = "pool_noodle.jpeg"
+PINK_GUN_FILE = "pink_gun.jpeg"
 
-hot_pink_screen = "hot_pink.jpg"
-light_pink_screen = "light_pink.jpg"
+HOT_PINK_SCREEN = "hot_pink.jpg"
+LIGHT_PINK_SCREEN = "light_pink.jpg"
 
-character_width = 120
-character_height = 120
+CHARACTER_WIDTH = 120
+CHARACTER_HEIGHT = 120
 
-pool_noodle_size = (80, 20)
-pink_gun_size = (60, 30)
+POOL_NOODLE_SIZE = (80, 20)
+PINK_GUN_SIZE = (60, 30)
 
-player_weapon_offset_x = -10
-player_weapon_offset_Y = -10
+PLAYER_WEAPON_OFFSET_X = -10
+PLAYER_WEAPON_OFFSET_Y = -10
 
-opponent_weapon_offset_x = -30
-opponent_weapon_offset_y_divisor = 3
+OPPONENT_WEAPON_OFFSET_X = -30
+OPPONENT_WEAPON_OFFSET_X_DIVISOR = 3
 
-health_bar_width = 150
-health_bar_height = 15
+HEALTH_BAR_WIDTH = 150
+HEALTH_BAR_HEIGHT = 15
 
-player_health_bar_pos = (50, 50)
-opponent_health_bar_pos = (400, 50)
+PLAYER_HEALTH_BAR_POS = (50, 50)
+OPPONENT_HEALTH_BAR_POS = (400, 50)
 
 def get_monster_image_path(color):
-    file_name = f"{color.replace(' ', '_')}{monster_suffix}"
+    file_name = f"{color.replace(' ', '_')}{MONSTER_SUFFIX}"
     return os.path.join(colors_folder, file_name)
 
 def get_pink_monster_path():
-    return os.path.join(colors_folder, pink_monster_file)
+    return os.path.join(colors_folder, PINK_MONSTER_FILE)
 
 def get_weapon_path(file_name):
     return os.path.join(colors_folder, file_name)
 
 def get_celebration_image(pink_type):
     if pink_type == "hot pink":
-        return os.path.join(colors_folder, hot_pink_screen)
+        return os.path.join(colors_folder, HOT_PINK_SCREEN)
     elif pink_type == "light pink":
-        return os.path.join(colors_folder, light_pink_screen)
+        return os.path.join(colors_folder, LIGHT_PINK_SCREEN)
