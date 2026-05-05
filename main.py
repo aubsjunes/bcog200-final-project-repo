@@ -25,3 +25,6 @@ def main():
         print("Pink wins. As expected. ")
         print("Better luck next time JKKKK")
         print("===================================\n")
+
+if __name__ == "__main__":
+    main()
