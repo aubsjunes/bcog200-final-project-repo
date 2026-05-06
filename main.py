@@ -1,7 +1,7 @@
 import config
 from game_logic import get_player_choice, determine_game_path
 from fight_engine import start_fight
-from ui_display import display_intro, celebration_screen
+from ui_display import display_intro, celebration_screen, show_instruction_screen
 
 def main():
     display_intro()
@@ -15,7 +15,9 @@ def main():
         celebration_screen(choice)
 
     elif path == "fight":
-        # Non-pink → rigged fight
+       
+        show_instruction_screen()
+
         result = start_fight(choice)
 
         print("\n===================================")

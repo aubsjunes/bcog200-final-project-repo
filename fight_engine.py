@@ -1,6 +1,7 @@
 import pygame
 import config
 from ui_display import draw_instructions
+import random
 
 def load_image(path, size=None):
     image = pygame.image.load(path).convert_alpha()
@@ -87,7 +88,6 @@ def update_health(player, opponent):
     opponent["health"] = config.OPPONENT_MAX_HEALTH
 
 def update_health(player, opponent):
-    # Player slowly loses health no matter what
     player["health"] -= config.PLAYER_HEALTH_DECAY
 
     opponent["health"] = config.OPPONENT_MAX_HEALTH
@@ -102,8 +102,22 @@ def handle_player_input():
     if keys[pygame.K_SPACE]:
         pass
 
-def enemy_behavior(opponent):
-    opponent["x"] -= config.OPPONENT_SPEED
+def enemy_behavior(opponent, player):
+    distance = abs(opponent["x"] - player["x"])
+
+    if distance <= config.STOP_DISTANCE:
+        return
+
+    random_x = random.randint(-config.OPPONENT_RANDOM_RANGE, config.OPPONENT_RANDOM_RANGE)
+    random_y = random.randint(-1, 1)
+
+    if opponent["x"] > player["x"]:
+        opponent["x"] -= config.OPPONENT_BASE_SPEED
+    else:
+        opponent["x"] += config.OPPONENT_BASE_SPEED
+
+    opponent["x"] += random_x
+    opponent["y"] += random_y
 
 def draw_health_bar(screen, x, y, health, max_health):
     ratio = max(health / max_health, 0)
@@ -125,8 +139,33 @@ def draw_health_bar(screen, x, y, health, max_health):
         )
     )
 
+def get_player_weapon_pos(player):
+    weapon_x = (
+        player["x"]
+        + player["width"]
+        + config.PLAYER_WEAPON_OFFSET_X
+    )
+
+    weapon_y = (
+        player["y"]
+        + player["height"] // 2
+        + config.PLAYER_WEAPON_OFFSET_Y
+    )
+
+    return weapon_x, weapon_y
+
+def get_pink_weapon_pos(opponent):
+    weapon_x = opponent["x"] + config.OPPONENT_WEAPON_OFFSET_X
+
+    weapon_y = (
+        opponent["y"]
+        + opponent["height"] // config.OPPONENT_WEAPON_OFFSET_Y_DIVISOR
+    )
+
+    return weapon_x, weapon_y
+
 def render_scene(screen, player, opponent):
-    screen.fill(config.WHITE)
+    screen.fill(config.PINK)
 
     screen.blit(player["image"], (player["x"], player["y"]))
     px, py = get_player_weapon_pos(player)
@@ -180,11 +219,13 @@ def start_fight(player_color):
 
         handle_player_input()
 
-        enemy_behavior(opponent)
+        enemy_behavior(opponent, player)
 
         update_health(player, opponent)
 
         render_scene(screen, player, opponent)
+
+        opponent["y"] = max(0, min(config.SCREEN_HEIGHT - opponent["height"], opponent["y"]))
 
         if player["health"] <= 0:
             running = False

@@ -13,59 +13,6 @@ There will be health bars but pink can take no damage so the player just helples
 The color (that is not pink) will try to run away and the player will try to control the game and help their color but it will not work.
 If pink of any kind is chosen there will just be a screen of celebration with themes relating to the type of pink chosen (designed by me!).
 
-Basically:
-The game follows this basic flow:
-The player selects a color from a predefined list.
-The program checks whether the selected color is a shade of pink.
-Based on the choice:
-Non-pink color → enters a “fight” against light pink.
-Pink color → triggers a celebration screen.
-In the fight:
-The player is shown controls but cannot actually affect gameplay.
-The opponent (light pink) is overpowered and cannot lose.
-The player’s character slowly loses health regardless of input.
-
-List of functions to be used:
-main() (duh!)
-
-get_player_choice(color_list)
-Prompts the user to choose a color.
-color_list (list of strings): Available color options
-choice (string): Player’s selected color
-
-is_pink(choice)
-Checks if the selected color is a shade of pink.
-choice (string)
-True if the color is "hot pink" or "light pink"
-False otherwise
-
-start_fight(player_color)
-Starts the rigged fight sequence.
-player_color (string)
-Loads character sprites (JPEG images)
-Displays instructions (non-functional controls)
-Runs fight loop where player always loses
-
-display_instructions()
-Shows gameplay controls to the player.
-Arrow keys → movement
-Spacebar → attack
-(These controls do not actually work.)
-
-update_health(player, opponent)
-Updates health bars during the fight.
-player (object or dict)
-opponent (object or dict)
-Player health decreases over time
-Pink opponent health never decreases
-
-celebration_screen(pink_type)
-Displays a themed celebration if a pink color is chosen.
-pink_type (string): "hot pink" or "light pink"
-Shows custom visuals and theme based on pink type :P
-
-Could be used if someone wants to play a funny, unexpected game or a developer is demonstrating game design concepts.
-
 Inputs needed:
 I need to include a string of colors
 Must insert .jpeg files
