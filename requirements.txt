@@ -1,0 +1,1 @@
+Must download pygame for the game to work!
