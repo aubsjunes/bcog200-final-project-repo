@@ -1,20 +1,8 @@
-# bcog200-pink-fighter-game
+# pink-fighter-game
 
-The goal is to set up a program that functions as a rigged video game.
-It is a color versus color video game.
-The program asks the player to pick their favorite color from a list:
-red, orange, yellow, green, blue, purple, white, hot pink, black, navy, light pink
-There are two outcomes that can happen, if the player picks a color other than pink, 
-their color will be recorded and entered into a fighter game with pink (each color will represented as a monster flavor. there is a jpeg for each monster flavor.)
-the selected color will be given a pool noodle to fight with light pink.
-The catch is that light pink will be faster and also have a pink gun
-ANother catch is that there will instructions (use the arrows to control movement and use space to hit pink with the pool noodle) on how to play but none of the controls will work because pink must win no matter what.
-There will be health bars but pink can take no damage so the player just helplessly watches their color slowly loss all their health
-The color (that is not pink) will try to run away and the player will try to control the game and help their color but it will not work.
-If pink of any kind is chosen there will just be a screen of celebration with themes relating to the type of pink chosen (designed by me!).
-
-Inputs needed:
-I need to include a string of colors
-Must insert .jpeg files
+My planned project is a rigged color-versus-color fighting game made in Python using the pygame library. The player chooses their favorite color from a list of colors, and if they choose a non-pink color, their character is forced into a battle against a powerful pink opponent. The game appears to give the player control through movement and attack instructions, but the controls intentionally do not work because pink is designed to always win. If the player chooses hot pink or light pink, they instead receive a celebration screen themed around the pink color they selected (designed by me!).
 
 Make sure to download pygame before getting started
+
+# testing
+The program can be tested by running the main.py file after ensuring that all required Python files and image assets are included in the project folder. The project requires files such as main.py, config.py, fight_engine.py, game_logic.py, ui_display.py, and a colors_folder directory containing all monster and weapon images. Example image files include blue_monster.jpeg, pink_monster.jpeg, pool_noodle.jpeg, pink_gun.jpeg, hot_pink.jpg, and light_pink.jpg. When the program starts, the user is prompted to choose a color from a list of approved options. If the player selects a non-pink color such as blue or green, the game launches a rigged battle scene in which the chosen monster fights against a pink opponent. The selected monster appears with a pool noodle weapon while the pink opponent appears with a pink gun. Instructions explaining the controls are displayed on screen, but the controls intentionally do not work as part of the game design. During gameplay, the player’s health bar slowly decreases while the pink opponent’s health remains full, resulting in the player always losing the battle. If the user instead chooses “hot pink” or “light pink,” the battle is skipped entirely and a themed celebration screen appears using the corresponding pink image. Invalid inputs, such as colors not included in the approved list, should cause the program to reject the entry and ask the user to input a valid color before continuing. These tests verify the program’s user input validation, image loading, pygame rendering, health bar system, opponent movement, celebration screens, and overall game flow.
