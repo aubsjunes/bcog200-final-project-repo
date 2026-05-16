@@ -1,4 +1,4 @@
-# bcog200-final-project-repo
+# bcog200-pink-fighter-game
 
 The goal is to set up a program that functions as a rigged video game.
 It is a color versus color video game.
