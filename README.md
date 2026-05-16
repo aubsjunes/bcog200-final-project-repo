@@ -16,3 +16,5 @@ If pink of any kind is chosen there will just be a screen of celebration with th
 Inputs needed:
 I need to include a string of colors
 Must insert .jpeg files
+
+Make sure to download pygame before getting started
