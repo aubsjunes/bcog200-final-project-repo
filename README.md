@@ -1,4 +1,4 @@
-# bcog200-final-project-repo
+# bcog200-pink-fighter-game
 
 The goal is to set up a program that functions as a rigged video game.
 It is a color versus color video game.
@@ -16,3 +16,5 @@ If pink of any kind is chosen there will just be a screen of celebration with th
 Inputs needed:
 I need to include a string of colors
 Must insert .jpeg files
+
+Make sure to download pygame before getting started
